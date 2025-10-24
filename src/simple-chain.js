@@ -1,32 +1,33 @@
-const { NotImplementedError } = require('../extensions/index.js');
+const { decorateObject } = require('../lib');
+const { NotImplementedError } = require('../lib');
 
 /**
  * Implement chainMaker object according to task description
- * 
+ *
  */
 const chainMaker = {
   getLength() {
+    // Remove line below and write your code here
     throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
   },
   addLink(/* value */) {
+    // Remove line below and write your code here
     throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
   },
   removeLink(/* position */) {
+    // Remove line below and write your code here
     throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
   },
   reverseChain() {
+    // Remove line below and write your code here
     throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
   },
   finishChain() {
+    // Remove line below and write your code here
     throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
-  }
+  },
 };
 
 module.exports = {
-  chainMaker
+  chainMaker,
 };
