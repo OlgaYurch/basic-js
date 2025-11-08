@@ -15,7 +15,7 @@ const { NotImplementedError } = require('../lib');
  */
 function createDreamTeam(members) {
   if (!Array.isArray(members)) {
-    return '';
+    return false;
   };
 
   const teamName = [];
