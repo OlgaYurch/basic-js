@@ -20,14 +20,64 @@ const { NotImplementedError } = require('../lib');
  *
  */
 class VigenereCipheringMachine {
-  encrypt() {
-    // Remove line below and write your code here
-    throw new NotImplementedError('Not implemented');
+  constructor(direct = true) {
+    this.direct = direct;
+  };
+
+  encrypt(message, key) {
+    if (typeof message !== 'string' || typeof key !== 'string') {
+      throw new Error('Incorrect arguments!');
+    };
+
+    message = message.toUpperCase();
+    key = key.toUpperCase();
+    let result = '';
+    let keyIndex = 0;
+
+    for (let i = 0; i < message.length; i += 1) {
+      const char = message[i];
+      if (char >= 'A' && char <= 'Z') {
+        const messageCode = char.charCodeAt(0) - 65;
+        const keyCode = key[keyIndex % key.length].charCodeAt(0) - 65;
+        const encryptedCode = (messageCode + keyCode) % 26;
+        result += String.fromCharCode(encryptedCode + 65);
+        keyIndex += 1;
+      } else {
+        result += char;
+      }
+    };
+    if (!this.direct) {
+      result = result.split('').reverse().join('');
+    }
+    return result;
   }
 
-  decrypt() {
-    // Remove line below and write your code here
-    throw new NotImplementedError('Not implemented');
+  decrypt(message, key) {
+    if (typeof message !== 'string' || typeof key !== 'string') {
+      throw new Error('Incorrect arguments!');
+    };
+
+    message = message.toUpperCase();
+    key = key.toUpperCase();
+    let result = '';
+    let keyIndex = 0;
+
+    for (let i = 0; i < message.length; i += 1) {
+      const char = message[i];
+      if (char >= 'A' && char <= 'Z') {
+        const messageCode = char.charCodeAt(0) - 65;
+        const keyCode = key[keyIndex % key.length].charCodeAt(0) - 65;
+        const decryptedCode = (messageCode - keyCode + 26) % 26;
+        result += String.fromCharCode(decryptedCode + 65);
+        keyIndex += 1;
+      } else {
+        result += char;
+      }
+    };
+    if (!this.direct) {
+      result = result.split('').reverse().join('');
+    }
+    return result;
   }
 }
 
